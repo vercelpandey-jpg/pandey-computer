@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface NavbarItem {
   _id: string;
@@ -12,11 +13,17 @@ interface NavbarItem {
 
 interface DesktopNavMenuProps {
   topLevelItems: NavbarItem[];
+  className?: string;
 }
 
-export default function DesktopNavMenu({ topLevelItems }: DesktopNavMenuProps) {
+export default function DesktopNavMenu({
+  topLevelItems,
+  className,
+}: DesktopNavMenuProps) {
   return (
-    <nav className="bg-primary text-white hidden lg:block">
+    <nav
+      className={cn("bg-primary text-white hidden lg:block h-full", className)}
+    >
       <div className="relative">
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center h-12 gap-1">

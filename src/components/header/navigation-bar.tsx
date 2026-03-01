@@ -74,13 +74,13 @@ export default function NavigationBar({ menuData }: NavigationBarProps) {
         <TopInfoBar />
       </div>
       <LogoAndSearchBar onMobileMenuOpen={() => setIsMobileMenuOpen(true)} />
-      <div
-        className={`overflow-hidden transition-all duration-300 ease-in-out ${
-          isCompact ? "max-h-0 opacity-0" : "max-h-24 opacity-100"
+
+      <DesktopNavMenu
+        topLevelItems={topLevelItems}
+        className={`transition-all duration-300 ease-in-out ${
+          isCompact ? "max-h-0 opacity-0" : "opacity-100"
         }`}
-      >
-        <DesktopNavMenu topLevelItems={topLevelItems} />
-      </div>
+      />
       <MobileMenu
         isOpen={isMobileMenuOpen}
         onClose={() => setIsMobileMenuOpen(false)}
