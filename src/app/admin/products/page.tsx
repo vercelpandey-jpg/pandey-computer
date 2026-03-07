@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import useSWR from "swr";
-import { fetcher } from "@/lib/fetcher";
+import { fetcher, deleteRequest } from "@/lib/fetcher";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -93,18 +93,13 @@ export default function ProductsPage() {
 
   const handleDelete = async (id: string) => {
     try {
-      const response = await fetch(`/api/products?id=${id}`, {
-        method: "DELETE",
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to delete product");
-      }
-
+      await deleteRequest(`/api/products?id=${id}`);
+      toast.success("Product deleted successfully");
       mutate();
       setDeleteId(null);
     } catch (error) {
       console.error("Error deleting product:", error);
+      toast.error("Failed to delete product");
     }
   };
 
@@ -349,7 +344,7 @@ export default function ProductsPage() {
                 Edit
               </DropdownMenuItem>
               <DropdownMenuItem
-                onClick={() => setDeleteId(product.slug)}
+                onClick={() => setDeleteId(String(product._id))}
                 className="text-red-600"
               >
                 <Trash2 className="mr-2 h-4 w-4" />

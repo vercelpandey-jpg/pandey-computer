@@ -8,3 +8,10 @@ export async function sendRequest(url: string, { arg }: { arg: unknown }) {
   });
   return response.data;
 }
+
+export async function deleteRequest(url: string) {
+  const response = await axios.delete(url, {
+    headers: { "Content-Type": "application/json" },
+  });
+  return response.data;
+}
