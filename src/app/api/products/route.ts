@@ -33,7 +33,10 @@ export async function GET(req: Request) {
 
       return new Response(JSON.stringify({ data: [product] }), {
         status: 200,
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "Cache-Control": "public, s-maxage=60, stale-while-revalidate=300",
+        },
       });
     }
 
@@ -120,7 +123,10 @@ export async function GET(req: Request) {
       }),
       {
         status: 200,
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "Cache-Control": "public, s-maxage=60, stale-while-revalidate=300",
+        },
       },
     );
   } catch (error) {

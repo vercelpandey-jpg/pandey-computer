@@ -17,7 +17,14 @@ export async function GET(
       return Response.json({ error: "Not found" }, { status: 404 });
     }
 
-    return Response.json({ data: blog });
+    return Response.json(
+      { data: blog },
+      {
+        headers: {
+          "Cache-Control": "public, s-maxage=60, stale-while-revalidate=300",
+        },
+      },
+    );
   } catch (error) {
     console.error(error);
     return Response.json({ error: "Failed to fetch blog" }, { status: 500 });

@@ -8,7 +8,7 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
     <SWRConfig
       value={{
         revalidateOnFocus: false,
-        revalidateOnMount: false,
+        // revalidateOnMount: false,
       }}
     >
       <NextProgress />

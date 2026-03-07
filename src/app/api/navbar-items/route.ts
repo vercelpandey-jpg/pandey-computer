@@ -46,7 +46,10 @@ export async function GET(req: Request) {
 
       return new Response(JSON.stringify({ data: level1Items }), {
         status: 200,
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "Cache-Control": "public, s-maxage=300, stale-while-revalidate=600",
+        },
       });
     }
 
@@ -62,7 +65,10 @@ export async function GET(req: Request) {
 
     return new Response(JSON.stringify({ data: items }), {
       status: 200,
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "Cache-Control": "public, s-maxage=300, stale-while-revalidate=600",
+      },
     });
   } catch (error) {
     console.error("Error fetching navbar items:", error);
