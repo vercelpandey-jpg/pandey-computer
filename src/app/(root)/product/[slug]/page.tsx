@@ -172,8 +172,8 @@ export default async function ProductPage({
       </div>
 
       {/* Product Details */}
-      <section className="container mx-auto my-12 px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <section className="container mx-auto my-8 px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Image Gallery */}
           <div className="relative">
             <ProductImageGallery
@@ -193,27 +193,27 @@ export default async function ProductPage({
 
           {/* Product Info */}
           <div className="flex flex-col">
-            <div className="text-sm text-primary font-semibold uppercase tracking-wide mb-2">
+            <div className="text-xs text-primary font-semibold uppercase tracking-wide mb-2">
               {product.brand?.name || product.subBrand?.name || ""}
             </div>
-            <h1 className="text-lg sm:text-xl font-semibold text-foreground mb-4">
+            <h1 className="text-base sm:text-lg font-semibold text-foreground mb-3">
               {product.name}
             </h1>
 
             {/* Price */}
-            <div className="flex items-baseline flex-wrap gap-4 mb-4">
+            <div className="flex items-baseline flex-wrap gap-3 mb-4">
               <span className="text-xl text-primary font-medium">
                 Rs.{product.price.toLocaleString()}
               </span>
               {product.originalPrice && (
-                <span className="text-xl text-muted-foreground line-through">
+                <span className="text-lg text-muted-foreground line-through">
                   Rs.{product.originalPrice.toLocaleString()}
                 </span>
               )}
             </div>
 
             {/* Stock */}
-            <div className="mb-6">
+            <div className="mb-4">
               {product.stock ? (
                 <span className="text-green-600 font-semibold flex items-center gap-2">
                   <span className="w-2 h-2 bg-green-600 rounded-full"></span>In
@@ -230,8 +230,8 @@ export default async function ProductPage({
             <ProductActions product={product} />
 
             {/* Share Buttons */}
-            <div className="flex items-center gap-3 my-6">
-              <span className="text-base font-medium text-muted-foreground">
+            <div className="flex items-center gap-3 my-4">
+              <span className="text-sm font-medium text-muted-foreground">
                 Share:
               </span>
               <a
@@ -260,14 +260,16 @@ export default async function ProductPage({
 
             {/* Key Features */}
             {product?.keyFeatures && product.keyFeatures?.length > 0 && (
-              <div className="text-lg text-muted-foreground my-6">
-                <h3 className="text-black font-semibold">Key Features</h3>
+              <div className="text-sm text-muted-foreground my-4">
+                <h3 className="text-black text-sm font-semibold mb-2">
+                  Key Features
+                </h3>
                 {product?.keyFeatures?.map((f, i) => (
-                  <div key={i} className="flex items-start gap-3 mt-2">
-                    <div className="mt-1 text-primary">
-                      <GoDotFill className="size-5" />
+                  <div key={i} className="flex items-start gap-2 mt-1.5">
+                    <div className="mt-1 text-primary shrink-0">
+                      <GoDotFill className="size-3" />
                     </div>
-                    <p className="text-muted-foreground">{f}</p>
+                    <p className="text-muted-foreground text-sm">{f}</p>
                   </div>
                 ))}
               </div>
@@ -276,7 +278,7 @@ export default async function ProductPage({
         </div>
 
         {/* Tabs */}
-        <div className="mt-16">
+        <div className="mt-10">
           <ProductSpecs specs={specsArray} />
         </div>
 

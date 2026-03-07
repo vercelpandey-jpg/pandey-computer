@@ -129,7 +129,7 @@ export function ProductActions({ product }: ProductActionsProps) {
             >
               -
             </Button>
-            <span className="w-16 text-center font-semibold text-lg">
+            <span className="w-12 text-center font-semibold text-base">
               {quantity}
             </span>
             <Button
@@ -144,29 +144,31 @@ export function ProductActions({ product }: ProductActionsProps) {
         </div>
       )}
 
-      <p className="mb-8 text-gray-500">**Price is inclusive of VAT**</p>
+      <p className="mb-4 text-xs text-gray-500">
+        **Price is inclusive of VAT**
+      </p>
 
       {/* Action Buttons */}
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-3">
         <Button
-          size="lg"
-          className="text-base w-full"
+          size="default"
+          className="text-sm w-full"
           disabled={buttonConfig.disabled}
           onClick={handleAction}
           variant={buttonConfig.variant}
         >
-          <Icon className="mr-2 h-5 w-5" />
+          <Icon className="mr-2 h-4 w-4" />
           {buttonConfig.text}
         </Button>
 
         <Button
-          size="lg"
+          size="default"
           variant={isInWishlist ? "default" : "outline"}
-          className="text-base w-full"
+          className="text-sm w-full"
           onClick={handleWishlistToggle}
         >
           <Heart
-            className={`mr-2 h-5 w-5 ${isInWishlist ? "fill-current" : ""}`}
+            className={`mr-2 h-4 w-4 ${isInWishlist ? "fill-current" : ""}`}
           />
           {isInWishlist ? "In Wishlist" : "Add to Wishlist"}
         </Button>

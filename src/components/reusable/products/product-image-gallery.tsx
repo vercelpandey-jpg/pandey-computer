@@ -17,7 +17,7 @@ export function ProductImageGallery({
   return (
     <div className="space-y-4">
       {/* Main Image */}
-      <div className="relative w-full h-[450px] rounded-2xl overflow-hidden border border-border">
+      <div className="relative w-full h-[380px] rounded-2xl overflow-hidden border border-border">
         <Image
           src={images[selectedImage]}
           alt={`${productName} - Image ${selectedImage + 1}`}
